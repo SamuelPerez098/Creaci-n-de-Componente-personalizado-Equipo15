@@ -271,6 +271,8 @@ public class VisorImagenes extends JFrame {
 https://www.youtube.com/watch?v=lrKfkxJZg1k
 
 ### Vista previa del visor de imágenes
+
+Tutorial de como poner el .jar en la paleta!!!!! (se usó netBeans para este proyecto)
 primero, vamos a agregar el componente a la paleta de componentes
 el primer paso es descargar el .jar que tiene de nombre componentemodificadooo.jar 
 
@@ -301,6 +303,8 @@ de ahí se les van a mostrar 3 nombres, le van a dar el de enmedio o el que se l
 ![Image](https://github.com/user-attachments/assets/f53bf8f1-8460-4632-b3a6-84e3e18ec1ac)
 
 y listo, ya está en la paleta, ahora para usarlo crean un jframe y arrastran el componente de la paleta al jframe.
+
+Uso del componente!!!
 Ahora cuando se ejecuta el jframe, se nos va a mostrar el componente así
 
 ![Image](https://github.com/user-attachments/assets/0f4800e6-b1f5-45dd-b170-a1ef84c6a38a)
