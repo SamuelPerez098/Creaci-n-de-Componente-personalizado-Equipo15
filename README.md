@@ -271,8 +271,37 @@ public class VisorImagenes extends JFrame {
 https://www.youtube.com/watch?v=lrKfkxJZg1k
 
 ### Vista previa del visor de imágenes
+primero, vamos a agregar el componente a la paleta de componentes
+el primer paso es descargar el .jar que tiene de nombre componentemodificadooo.jar 
 
-Cuando se ejecuta el jframe, se nos va a mostrar el componente así
+![Image](https://github.com/user-attachments/assets/72a46c66-daff-4e27-805b-efeac82aaf79)
+
+luego nos vamos a NetBeans y marcamos las opciones que se muestran en la imagen siguiente 
+
+![Image](https://github.com/user-attachments/assets/e53b1a3c-f7a5-44e1-855d-d239d8ae6ccd)
+
+luego nos va a aparecer la ventana de Palette Manager, ahí le vamos a dar en la opción New Category..., no se ve mucho pero es la que esta marcada de azul
+
+![Image](https://github.com/user-attachments/assets/049c4da0-37d7-477f-a6a3-ea428b4e6a6e)
+
+al darle esa opción de nueva categoria, nos aparecerá otra ventana en la cual nos dejara ingresar el nombre de la categori, ustedes pueen ponerle como gusten y le dan ok
+
+![Image](https://github.com/user-attachments/assets/fd56b75d-e991-43bd-897b-917b4f02c280)
+
+una vez que le dan ok, se va a mostrar la nueva carpeta con las demás categorias, la seleccionan y le van a dar "Add from JAR.."
+
+![Image](https://github.com/user-attachments/assets/0fd8ccbd-395f-4829-813a-831fa1cde295)
+
+después van a buscar el jar que descargaron anteriormente que normalmente esta en descargas, lo seleccionan y le dan next
+
+![Image](https://github.com/user-attachments/assets/1ad1396f-77eb-4cd8-b4ad-7516041b219d)
+
+de ahí se les van a mostrar 3 nombres, le van a dar el de enmedio o el que se llama mijpanelmodificado y pulsan next
+
+![Image](https://github.com/user-attachments/assets/f53bf8f1-8460-4632-b3a6-84e3e18ec1ac)
+
+y listo, ya está en la paleta, ahora para usarlo crean un jframe y arrastran el componente de la paleta al jframe.
+Ahora cuando se ejecuta el jframe, se nos va a mostrar el componente así
 
 ![Image](https://github.com/user-attachments/assets/0f4800e6-b1f5-45dd-b170-a1ef84c6a38a)
 
