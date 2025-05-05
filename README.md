@@ -1,16 +1,170 @@
-# Creaci-n-de-Componente-personalizado-Equipo15
+# Creacion-de-Componente-personalizado-Equipo15
 Un componente básico de un visor de imágenes en JAVA 
 
-/**
- * VisorImagenes.java
- *
- * Este programa implementa componente modificado simulando un    visor de imágenes usando Swing en Java.
- * Permite abrir imágenes desde el sistema de archivos y mostrarlas en un JFrame.
- *
- * Autor: Braulio Mendoza Vargas y Samuel Pérez Ramirez
- * Fecha: Mayo 2025
- */
+##  Estructura del Código
 
+###  Clase `Registro`
+
+Contiene los datos personales de un usuario, necesarios para la generación del correo institucional, además de representar a una persona con los siguientes atributos:
+
+#### Atributos:
+- `String nombre` – Primer nombre del usuario.
+- `String segundoNombre` – Segundo nombre, si existe.
+- `String apellidoPaterno` – Apellido paterno del usuario.
+- `String apellidoMaterno` – Apellido materno del usuario.
+- `String fechaNacimiento` – Fecha en formato `YYYYMMDD`.
+- `String institucion` – Nombre de la institución.
+- `String correo` – Correo generado (posteriormente).
+
+#### Constructor:
+```java```
+public Registro(String nombreCompleto, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String institucion)
+
+##  Validaciones
+
+- Lanza `IllegalArgumentException` si cualquier parámetro obligatorio es `null`.
+- Se separa `nombreCompleto` en `nombre` y `segundoNombre`.
+- El campo `correo` se inicializa como cadena vacía.
+
+---
+
+##  Clase final `GeneradorCorreo`
+
+###  Variables
+
+- `private static final HashSet<String> correosExistentes`  
+  Para evitar correos duplicados.
+
+- `public static final ArrayList<Registro> registros`  
+  Lista de registros creados.
+
+###  Métodos
+
+#### `public static String generarCorreo(Registro registro)`
+
+- Genera un correo electrónico único.
+- Valida campos no nulos y solo letras.
+- Añade `segundoNombre` o `fechaNacimiento` para asegurar unicidad.
+
+#### `public static void registrarUsuario(...)`
+
+- Valida campos, crea un registro y genera correo.
+- **Parámetros:**  
+  `nombre`, `apellidoP`, `apellidoM`, `fechaNacimiento`, `institucion`
+
+#### `public static void mostrarCorreos()`
+
+- Muestra todos los correos generados usando `JOptionPane`.
+
+---
+
+##  Clase `Prueba` (Interfaz gráfica)
+
+Interfaz Swing para registrar usuarios y generar correos.
+
+###  Imports
+```java```
+import Metodos.GeneradorCorreo;
+import Metodos.Registro;
+
+## 🧱 Componentes
+
+| Componente Swing            | Variable       | Descripción                    |
+|----------------------------|----------------|--------------------------------|
+| `JTextField`               | `Nombretxt`    | Campo nombre completo          |
+| `JTextField`               | `ApellidoPtxt` | Apellido paterno               |
+| `JTextField`               | `ApellidoMtxt` | Apellido materno               |
+| `JTextField`               | `Dominiotxt`   | Dominio o institución          |
+| `JDateChooser` (lib externa) | `Fecha`      | Selector de fecha de nacimiento |
+| `JButton`                  | `generar`      | Botón para generar correo      |
+| `JButton`                  | `ver`          | Ver correos generados          |
+
+---
+
+##  Métodos clave
+
+### `generarActionPerformed(...)`
+- Toma datos, valida, genera correo y muestra resultado.
+
+### `verActionPerformed(...)`
+- Muestra lista de correos registrados usando `JOptionPane`.
+
+---
+
+##  Clase `mijpanelmodificado` (Galería de Imágenes)
+
+Componente Swing que permite visualizar, seleccionar, rotar y eliminar imágenes, con una tira de miniaturas y zoom.
+
+---
+
+##  Funcionalidades principales
+
+-  Cargar carpeta o múltiples imágenes.
+-  Zoom con scroll del mouse.
+- Rotar imagen actual.
+-  Eliminar imagen.
+- ⬅ Navegación entre imágenes.
+-  Miniaturas en tira inferior.
+
+---
+
+##  Interfaz gráfica
+
+- `JLabel imageLabel`: Muestra imagen principal.
+- `JScrollPane imageScrollPane`: Panel con scroll de imagen.
+- `JPanel galleryPanel`: Contenedor de miniaturas.
+- `JScrollPane galleryScrollPane`: Scroll horizontal para miniaturas.
+- Botones invisibles `⯇ ⯈` para navegación.
+
+---
+
+##  Eventos
+
+- `MouseWheelListener`: Zoom.
+- `MouseAdapter`: Menú contextual (clic derecho).
+- `MouseMotionAdapter`: Mostrar botones al acercarse a los márgenes.
+- `ComponentListener`: Redimensionamiento.
+
+---
+
+##  Métodos clave
+
+### `seleccionarImagenes()`
+- Abre un `JFileChooser` para seleccionar múltiples imágenes.
+
+### `seleccionarCarpeta()`
+- Abre un directorio completo con imágenes.
+
+### `precargarImagenes(String ruta)`
+- Carga automáticamente imágenes desde una ruta fija.
+
+### `rotateImage()`
+- Rota la imagen actual (pendiente de implementación completa).
+
+### `displayImage()`
+- Escala la imagen según el `zoomFactor` y la muestra.
+
+### `updateGallery()`
+- Actualiza la tira de miniaturas debajo de la imagen.
+
+### `deleteImage()`
+- Elimina la imagen actual del arreglo y actualiza la vista.
+
+---
+
+##  Requisitos
+
+- Java 8 o superior  
+- `com.toedter.calendar` para `JDateChooser`  
+- Swing (incluido en el JDK)
+
+
+
+
+
+## Aquí el código completo
+
+```java
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -49,11 +203,11 @@ public class VisorImagenes extends JFrame {
                     File archivo = selectorArchivos.getSelectedFile();
                     ImageIcon imagen = new ImageIcon(archivo.getAbsolutePath());
 
-                    // Escalado proporcional a la ventana
+                    // Escalado proporcional al tamaño del label
                     Image imagenEscalada = imagen.getImage().getScaledInstance(
                             etiquetaImagen.getWidth(), etiquetaImagen.getHeight(), Image.SCALE_SMOOTH);
                     etiquetaImagen.setIcon(new ImageIcon(imagenEscalada));
-                    etiquetaImagen.setText(null);
+                    etiquetaImagen.setText(null); // Elimina el texto predeterminado
                 }
             }
         });
@@ -63,7 +217,7 @@ public class VisorImagenes extends JFrame {
         add(botonAbrir, BorderLayout.SOUTH);
 
         setSize(600, 400);
-        setLocationRelativeTo(null); // Centrar ventana
+        setLocationRelativeTo(null); // Centra la ventana
         setVisible(true);
     }
 
@@ -75,40 +229,38 @@ public class VisorImagenes extends JFrame {
     }
 
     /**
-     * Métodos y propiedades relevantes:
+     * Métodos y componentes relevantes:
      *
-     * - JLabel: utilizado para mostrar la imagen o texto inicial.
+     * - JLabel: Muestra la imagen o texto inicial.
      *   Métodos: setIcon(Icon), setText(String), setHorizontalAlignment(int)
      *
-     * - JButton: botón que dispara la acción de seleccionar imagen.
+     * - JButton: Dispara la acción para seleccionar una imagen.
      *   Métodos: addActionListener(ActionListener)
      *
-     * - JFileChooser: componente para seleccionar archivos del sistema.
+     * - JFileChooser: Permite seleccionar archivos del sistema.
      *   Métodos: setFileFilter(FileFilter), showOpenDialog(Component), getSelectedFile()
      *
-     * - ImageIcon: clase que representa una imagen cargada.
+     * - ImageIcon: Representa una imagen cargada.
      *   Métodos: getImage()
      *
-     * - Image: permite escalar imágenes con getScaledInstance(ancho, alto, tipo)
+     * - Image: Escala imágenes usando getScaledInstance(ancho, alto, tipo)
      */
 
     /**
-     * Breve explicación del componente:
+     * Descripción del componente:
      *
-     * Este visor de imágenes usa una interfaz sencilla de Swing. Al hacer clic derecho en cualquier parte,
-     * se abre un diálogo con múltiples opciones que te permiten seleccionar una imagen, una carpeta de imágenes, rotar o eliminar la imagen,
-     * que luego se muestra en el área central.
-     * La imagen se escala automáticamente para ajustarse al tamaño del área de visualización.
+     * Este visor de imágenes usa una interfaz sencilla con Swing. Permite al usuario seleccionar una imagen
+     * desde el sistema de archivos, que luego se muestra en el área central de la ventana.
+     * La imagen se escala automáticamente para ajustarse al área de visualización.
      */
 
     /**
      * Instrucciones de uso:
      *
-     * 1. Crea un nuevo proyecto
-     * 2. agrega un JFrame
-     * 3. añade el componente
-     * 4. Ejecuta el programa
-     * 5. Presiona el click derecho en la opción "Abrir Imagen" y selecciona una imagen válida (JPG, PNG o GIF).
-     * 6. La imagen se mostrará en la ventana.
+     * 1. Crea un nuevo proyecto en tu IDE.
+     * 2. Agrega esta clase con extensión .java.
+     * 3. Ejecuta el programa.
+     * 4. Presiona el botón "Abrir Imagen" y selecciona una imagen válida (JPG, PNG o GIF).
+     * 5. La imagen se mostrará dentro de la ventana.
      */
 }
