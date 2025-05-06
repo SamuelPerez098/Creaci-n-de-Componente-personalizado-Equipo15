@@ -272,7 +272,7 @@ https://www.youtube.com/watch?v=lrKfkxJZg1k
 
 ### Vista previa del visor de imágenes
 
-Tutorial de como poner el .jar en la paleta!!!!! (se usó netBeans para este proyecto)
+## Tutorial de como poner el .jar en la paleta!!!!! (se usó netBeans para este proyecto)
 
 
 
@@ -308,7 +308,7 @@ de ahí se les van a mostrar 3 nombres, le van a dar el de enmedio o el que se l
 
 y listo, ya está en la paleta, ahora para usarlo crean un jframe y arrastran el componente de la paleta al jframe.
 
-Uso del componente!!!
+## Uso del componente!!!
 
 
 
