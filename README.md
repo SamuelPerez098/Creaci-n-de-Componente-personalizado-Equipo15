@@ -270,7 +270,6 @@ public class VisorImagenes extends JFrame {
 ##  Link del video de Youtube
 https://www.youtube.com/watch?v=lrKfkxJZg1k
 
-### Vista previa del visor de imágenes
 
 ## Tutorial de como poner el .jar en la paleta!!!!! (se usó netBeans para este proyecto)
 
