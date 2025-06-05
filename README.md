@@ -1,121 +1,78 @@
 # Creacion-de-Componente-personalizado-Equipo15
 Un componente básico de un visor de imágenes en JAVA 
 
-##  Estructura del Código
-
-###  Clase `Registro`
-
-Contiene los datos personales de un usuario, necesarios para la generación del correo institucional, además de representar a una persona con los siguientes atributos:
-
-#### Atributos:
-- `String nombre` – Primer nombre del usuario.
-- `String segundoNombre` – Segundo nombre, si existe.
-- `String apellidoPaterno` – Apellido paterno del usuario.
-- `String apellidoMaterno` – Apellido materno del usuario.
-- `String fechaNacimiento` – Fecha en formato `YYYYMMDD`.
-- `String institucion` – Nombre de la institución.
-- `String correo` – Correo generado (posteriormente).
-
-#### Constructor:
-```java```
-public Registro(String nombreCompleto, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String institucion)
-
-##  Validaciones
-
-- Lanza `IllegalArgumentException` si cualquier parámetro obligatorio es `null`.
-- Se separa `nombreCompleto` en `nombre` y `segundoNombre`.
-- El campo `correo` se inicializa como cadena vacía.
-
----
-
-##  Clase final `GeneradorCorreo`
-
-###  Variables
-
-- `private static final HashSet<String> correosExistentes`  
-  Para evitar correos duplicados.
-
-- `public static final ArrayList<Registro> registros`  
-  Lista de registros creados.
-
-###  Métodos
-
-#### `public static String generarCorreo(Registro registro)`
-
-- Genera un correo electrónico único.
-- Valida campos no nulos y solo letras.
-- Añade `segundoNombre` o `fechaNacimiento` para asegurar unicidad.
-
-#### `public static void registrarUsuario(...)`
-
-- Valida campos, crea un registro y genera correo.
-- **Parámetros:**  
-  `nombre`, `apellidoP`, `apellidoM`, `fechaNacimiento`, `institucion`
-
-#### `public static void mostrarCorreos()`
-
-- Muestra todos los correos generados usando `JOptionPane`.
-
----
-
-##  Clase `Prueba` (Interfaz gráfica)
-
-Interfaz Swing para registrar usuarios y generar correos.
-
-###  Imports
-```java```
-import Metodos.GeneradorCorreo;
-import Metodos.Registro;
-
-## 🧱 Componentes
-
-| Componente Swing            | Variable       | Descripción                    |
-|----------------------------|----------------|--------------------------------|
-| `JTextField`               | `Nombretxt`    | Campo nombre completo          |
-| `JTextField`               | `ApellidoPtxt` | Apellido paterno               |
-| `JTextField`               | `ApellidoMtxt` | Apellido materno               |
-| `JTextField`               | `Dominiotxt`   | Dominio o institución          |
-| `JDateChooser` (lib externa) | `Fecha`      | Selector de fecha de nacimiento |
-| `JButton`                  | `generar`      | Botón para generar correo      |
-| `JButton`                  | `ver`          | Ver correos generados          |
-
----
-
-##  Métodos clave
-
-### `generarActionPerformed(...)`
-- Toma datos, valida, genera correo y muestra resultado.
-
-### `verActionPerformed(...)`
-- Muestra lista de correos registrados usando `JOptionPane`.
-
----
-
 ##  Clase `mijpanelmodificado` (Galería de Imágenes)
 
-Componente Swing que permite visualizar, seleccionar, rotar y eliminar imágenes, con una tira de miniaturas y zoom.
+componente swing personalizado en Java Swing para visualizar imágenes desde una carpeta cargada de imagenes o simplemente cargar imagen por imagen. Permite hacer zoom con la rueda del mouse, arrastrar con el cursor y navegar por múltiples imágenes mediante dos botones de izquierda a derecha y te permite ver el total de imagenes con una tira abajo de la imagen que se muestra.
 
----
+## Funciones Principales
+- Ejecuta la clase principal.
+- Usa el componente JPanelMOD
+- Insetar imagenes ya sea una por una o cragando una carpeta.
+- Haz zoom con la rueda del mouse.
+- Arrastra la imagen haciendo clic y moviéndola.
+- puedes borrar imagenes.
+- puedes rotar imagenes. 
+- navega entre imagenes para visualizarlas.
 
-##  Funcionalidades principales
+## Interfaz grafica
+- JLabel imageLabel: Muestra imagen principal.
+- JScrollPane imageScrollPane: Panel con scroll de imagen.
+- JPanel galleryPanel: Contenedor de miniaturas.
+- JScrollPane galleryScrollPane: Scroll horizontal para miniaturas.
+- Botones invisibles ⯇ ⯈ para navegación.
 
--  Cargar carpeta o múltiples imágenes.
--  Zoom con scroll del mouse.
-- Rotar imagen actual.
--  Eliminar imagen.
-- ⬅ Navegación entre imágenes.
--  Miniaturas en tira inferior.
+## Explicacion
+### Componente JpanelMOD
+JpanelMOD es un componente personalizado en Java Swing que permite visualizar y administrar imágenes con diversas funcionalidades como zoom, rotación, navegación, galería de miniaturas, carga desde carpeta, selección múltiple y eliminación.
 
----
+### Funcionalidades principales:
+- Carga de imágenes desde archivos individuales o carpetas completas.
+- Visualización escalable con zoom (incluye scroll automático al punto del cursor).
+- Navegación entre imágenes (siguiente/anterior).
+- Rotación de imágenes (90°).
+- Eliminación de imágenes seleccionadas.
+- Galería de miniaturas con selección directa.
+- Soporte para drag & drop visual en NetBeans con propiedades personalizables.
+###  Métodos destacados:
+- setRutaImagenes(String ruta): Establece la carpeta desde donde se cargan las imágenes.
+- precargarImagenes(String ruta): Carga las imágenes de la carpeta indicada.
+- displayImage(): Muestra la imagen actual adaptada al tamaño del panel y zoom.
+- displayImageConZoom(Point punto): Muestra la imagen actual con zoom centrado en el cursor.
+- rotateImage(): Rota la imagen actual 90 grados.
+- deleteImage(): Elimina la imagen actual.
+- zoomImage(int wheelRotation): Aplica zoom in/out con la rueda del ratón.
+- updateGallery(): Actualiza la galería de miniaturas.
 
-##  Interfaz gráfica
+### Propiedades personalizables (desde el editor visual de NetBeans):
+- tamaventanaaaaaa1: Tamaño del panel de visualización de imagen.
+- tamaventanaaaaaa2: Altura del panel de galería.
+- colorventanaaaaa: Color de fondo de la imagen.
+- colorbordeee: Color del borde de las miniaturas.
+- zoomInicial: Zoom inicial al cargar la imagen.
+- indiceImagenActual: Índice de la imagen actual mostrada.
 
-- `JLabel imageLabel`: Muestra imagen principal.
-- `JScrollPane imageScrollPane`: Panel con scroll de imagen.
-- `JPanel galleryPanel`: Contenedor de miniaturas.
-- `JScrollPane galleryScrollPane`: Scroll horizontal para miniaturas.
-- Botones invisibles `⯇ ⯈` para navegación.
 
+## Métodos clave de JpanelMOD
+### Navegación y visualización
+- void displayImage(): Muestra la imagen actual, ajustándola al tamaño del panel con el zoom definido.
+- void displayImageConZoom(Point punto): Muestra la imagen con zoom centrado en la posición del cursor (usado con scroll del mouse).
+- void siguienteImagen(): Avanza a la siguiente imagen (si existe).
+- void anteriorImagen(): Retrocede a la imagen anterior (si existe).
+### Zoom y rotación
+- void zoomImage(int wheelRotation): Aplica zoom in/out según la dirección del scroll del mouse.
+- void rotateImage(): Rota la imagen actual 90 grados en sentido horario.
+### Carga de imágenes
+- void setRutaImagenes(String ruta): Establece la carpeta base para buscar imágenes.
+- void precargarImagenes(String ruta): Carga todas las imágenes desde una carpeta y reinicia el índice actual.
+- void cargarImagenesDesdeCarpetaPorId(String rutaBase, int idProducto): Carga imágenes desde una subcarpeta cuyo nombre es el idProducto (por ejemplo, imagenes/15/).
+### Eliminación y manejo
+- void deleteImage(): Elimina la imagen actualmente visible del disco y la lista.
+- void updateGallery(): Actualiza la galería de miniaturas, útil después de agregar o eliminar imágenes.
+### Personalización visual
+- void setColorVentanaaaaaa(Color color): Cambia el color de fondo del panel principal.
+- void setColorBordeee(Color color): Cambia el color del borde en las miniaturas seleccionadas.
+- void setZoomInicial(double zoom): Define el valor de zoom inicial al mostrar imágenes
 ---
 
 ##  Eventos
@@ -127,37 +84,32 @@ Componente Swing que permite visualizar, seleccionar, rotar y eliminar imágenes
 
 ---
 
-##  Métodos clave
+## Eventos de mouse
+### MouseListener
 
-### `seleccionarImagenes()`
-- Abre un `JFileChooser` para seleccionar múltiples imágenes.
+#### mouseClicked:
+Se usa para:
+- Detectar clic en la imagen principal (marcar selección si hay múltiples).
+- Detectar doble clic en miniaturas para visualizarla en grande.
+---
+### MouseWheelListener
+#### mouseWheelMoved:
+- Controla el zoom al hacer scroll con el mouse sobre la imagen.
+---
+### MouseMotionListener
 
-### `seleccionarCarpeta()`
-- Abre un directorio completo con imágenes.
-
-### `precargarImagenes(String ruta)`
-- Carga automáticamente imágenes desde una ruta fija.
-
-### `rotateImage()`
-- Rota la imagen actual (pendiente de implementación completa).
-
-### `displayImage()`
-- Escala la imagen según el `zoomFactor` y la muestra.
-
-### `updateGallery()`
-- Actualiza la tira de miniaturas debajo de la imagen.
-
-### `deleteImage()`
-- Elimina la imagen actual del arreglo y actualiza la vista.
+#### mouseMoved:
+- Se usa para detectar si el cursor pasa sobre una miniatura, aplicando efectos visuales.
 
 ---
 
-##  Requisitos
-
-- Java 8 o superior  
-- `com.toedter.calendar` para `JDateChooser`  
-- Swing (incluido en el JDK)
-
+## Formato de imagenes compatibles
+- .jpg
+- .jpeg
+- .png
+- .bmp 
+- .gif
+---  
 
 
 
