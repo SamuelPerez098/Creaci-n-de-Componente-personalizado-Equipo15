@@ -1,7 +1,7 @@
 # Creacion-de-Componente-personalizado-Equipo15
 Un componente básico de un visor de imágenes en JAVA 
 
-##  Clase `mijpanelmodificado` (Galería de Imágenes)
+##  Clase `JpanelMOD` (Galería de Imágenes)
 
 componente swing personalizado en Java Swing para visualizar imágenes desde una carpeta cargada de imagenes o simplemente cargar imagen por imagen. Permite hacer zoom con la rueda del mouse, arrastrar con el cursor y navegar por múltiples imágenes mediante dos botones de izquierda a derecha y te permite ver el total de imagenes con una tira abajo de la imagen que se muestra.
 
